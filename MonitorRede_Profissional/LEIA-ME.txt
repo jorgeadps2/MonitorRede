@@ -1,0 +1,57 @@
+# Monitor de Rede — versão final
+
+Aplicativo Windows para monitorar Wi‑Fi, Ethernet e Internet.
+
+## O que já está preparado
+
+- Interface profissional
+- Tela de abertura (splash)
+- Ícone próprio `.ico`
+- Compatibilidade com PyInstaller
+- Executável em modo janela, sem console preto
+- Inclusão automática da pasta `assets`
+- Script para instalar dependências
+- Script para gerar o `.exe`
+- Arquivo `.spec` para builds reproduzíveis
+
+## Gerar o EXE
+
+1. Abra esta pasta no Windows.
+2. Execute `GERAR_EXE.bat`.
+3. Ao terminar, o executável estará em:
+
+`dist\MonitorRede.exe`
+
+## Se preferir instalar as dependências primeiro
+
+Execute:
+
+`INSTALAR_DEPENDENCIAS.bat`
+
+## Comando manual
+
+```powershell
+py -m pip install --upgrade pyinstaller pillow
+py -m PyInstaller --noconfirm --clean --onefile --windowed --name "MonitorRede" --icon "assets\monitor_rede.ico" --add-data "assets;assets" monitor_rede_final.py
+```
+
+## Observação
+
+O primeiro início do `.exe` pode levar alguns segundos porque o modo `--onefile` extrai os arquivos internos para uma pasta temporária. A tela de abertura foi incluída justamente para dar uma inicialização mais profissional.
+
+
+## Instalar com atalho na Área de Trabalho
+
+Depois de gerar o EXE com `GERAR_EXE.bat`, execute:
+
+`INSTALAR_MONITORREDE.bat`
+
+Ele instala o programa em `%LOCALAPPDATA%\MonitorRede` e cria automaticamente:
+
+- Atalho "Monitor de Rede" na Área de Trabalho
+- Atalho no Menu Iniciar
+- Ícone personalizado do aplicativo
+
+Se você já tiver o EXE gerado e quiser somente criar um atalho apontando para `dist\MonitorRede.exe`, execute:
+
+`CRIAR_ATALHO.bat`
